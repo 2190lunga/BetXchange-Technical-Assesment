@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.venv/
+venv/
+.env
+.env.*
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# DuckDB / data
+*.duckdb
+*.wal
+*.db
+
+# Project outputs are committed intentionally -- output/*.csv is a required
+# deliverable (Data Appendix) referenced throughout docs/ and reports/.
+reports/*.png
+reports/*.html
+dashboard/*.pbix
+
+# IDE/editor
+.vscode/
+.idea/
+
+# Office lock files (created while a file is open in Word/Excel/PowerPoint)
+~$*.pptx
+~$*.docx
+~$*.xlsx
+
+# Raw source files
+# Keep raw source data locally, but do not push it to GitHub.
+data/raw/
+
+# Local environment / logs
+*.log

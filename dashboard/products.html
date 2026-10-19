@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BetXchange | Products</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <aside class="sidebar">
+        <div class="brand-wrap">
+          <div class="betx-logo" aria-label="BetXchange logo">
+            <span class="bet">bet</span><span class="x-mark">X</span><span class="change">change</span>
+          </div>
+        </div>
+
+        <nav class="nav">
+          <a class="nav-item" href="index.html">Overview</a>
+          <a class="nav-item" href="customers.html">Customer Behaviour</a>
+          <a class="nav-item active" href="products.html">Products</a>
+          <a class="nav-item" href="risk.html">Risk</a>
+          <a class="nav-item" href="growth.html">Growth</a>
+        </nav>
+
+        <div class="sidebar-card">
+          <p class="label">Top engine</p>
+          <p class="value large accent">Casino</p>
+          <p class="muted">Largest stake and most resilient volumetric growth</p>
+        </div>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Financial performance and product mix</p>
+            <h2>Casino drives the largest share of stake, with Sport and Aviator as secondary engines</h2>
+          </div>
+          <div class="header-pills">
+            <span class="pill">Stake mix</span>
+            <span class="pill accent">Operator revenue</span>
+          </div>
+        </header>
+
+        <div class="month-filter" id="monthFilter"></div>
+
+        <section class="cards-grid" id="kpiCards"></section>
+
+        <section class="content-grid">
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Customer volume</p>
+                <h3>Monthly active customers</h3>
+              </div>
+            </div>
+            <div id="monthlyActiveBars" class="bar-chart"></div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Product mix</p>
+                <h3>Stake contribution by category</h3>
+              </div>
+            </div>
+            <div class="donut-wrap">
+              <div id="productDonut" class="donut-chart"></div>
+              <div id="productDonutLegend" class="donut-legend"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="content-grid">
+          <div class="panel large-panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Performance trend</p>
+                <h3>Total stake vs operator revenue</h3>
+              </div>
+            </div>
+            <div id="trendChart" class="trend-chart"></div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Product mix</p>
+                <h3>Stake by category (click to cross-highlight the donut)</h3>
+              </div>
+            </div>
+            <div id="productBars" class="product-bars"></div>
+            <p class="footnote">
+              Stake is <strong>modeled</strong>, not directly measured: transactions have no product field, so each
+              user's monthly stake is allocated across products in proportion to their slip-count share. A gap
+              against total company stake (~11%-21% depending on the month) is expected and disclosed, since not
+              every transacting user has a matching slip record. See docs/assumptions.md.
+            </p>
+          </div>
+        </section>
+
+        <section class="panel full-width-panel">
+          <div class="panel-header">
+            <div>
+              <p class="label">Product detail</p>
+              <h3>Product performance summary</h3>
+            </div>
+          </div>
+          <div id="productTable" class="retention-table"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

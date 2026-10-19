@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BetXchange | Customer Behaviour</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <aside class="sidebar">
+        <div class="brand-wrap">
+          <div class="betx-logo" aria-label="BetXchange logo">
+            <span class="bet">bet</span><span class="x-mark">X</span><span class="change">change</span>
+          </div>
+        </div>
+
+        <nav class="nav">
+          <a class="nav-item" href="index.html">Overview</a>
+          <a class="nav-item active" href="customers.html">Customer Behaviour</a>
+          <a class="nav-item" href="products.html">Products</a>
+          <a class="nav-item" href="risk.html">Risk</a>
+          <a class="nav-item" href="growth.html">Growth</a>
+        </nav>
+
+        <div class="sidebar-card">
+          <p class="label">Customer signal</p>
+          <p class="value large positive">+26%</p>
+          <p class="muted">Active users growth from May to July</p>
+        </div>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Customer behaviour and retention</p>
+            <h2>Customers are growing, but stake and value are concentrated in a small group</h2>
+          </div>
+          <div class="header-pills">
+            <span class="pill">Retention watch</span>
+            <span class="pill accent">High-value segments</span>
+          </div>
+        </header>
+
+        <div class="month-filter" id="monthFilter"></div>
+
+        <section class="cards-grid" id="customerKpiCards"></section>
+        <p class="footnote">
+          These 5 cards are period totals across the whole customer_kpis table (May-July combined) and do not change
+          with the month filter below, which drives the reactive charts (trend, scatter, segments).
+        </p>
+
+        <section class="content-grid">
+          <div class="panel large-panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Performance trend</p>
+                <h3>Stake vs operator revenue (click a point to filter the page)</h3>
+              </div>
+            </div>
+            <div id="trendChart" class="trend-chart"></div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Customer value</p>
+                <h3>Top 5 stake contributors (May-July)</h3>
+              </div>
+            </div>
+            <div id="topStakeBars" class="bar-chart"></div>
+          </div>
+        </section>
+
+        <section class="content-grid">
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Customer profitability</p>
+                <h3>Stake vs margin (sample of top 40 customers)</h3>
+              </div>
+            </div>
+            <div id="customerScatter" class="scatter-chart"></div>
+            <p class="footnote">
+              Each dot is one customer (May-July combined). Green = profitable for the operator (customer net lost
+              money on balance); red = the customer was a net winner (payout exposure for the operator), not a
+              demographic or risk-flag category.
+            </p>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Stake distribution</p>
+                <h3>Who is driving stake volume</h3>
+              </div>
+            </div>
+            <div id="stakeSegments" class="risk-summary"></div>
+            <p class="footnote">
+              Segments are computed from that month's own stake distribution (percentile rank), not fixed dollar
+              bands, and are not demographic or acquisition-based categories. See docs/assumptions.md.
+            </p>
+          </div>
+        </section>
+
+        <section class="content-grid">
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Recency</p>
+                <h3>Customers by latest activity month</h3>
+              </div>
+            </div>
+            <div id="customerActivityBars" class="bar-chart"></div>
+            <p class="footnote">
+              Each customer is counted once, in the month of their MOST RECENT transaction -- a recency/churn signal.
+              A customer whose last activity was in May and never returned shows up here under May, not July.
+            </p>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Retention</p>
+                <h3>Repeat activity by cohort and activity month</h3>
+              </div>
+            </div>
+            <div id="retentionTable" class="retention-table"></div>
+            <p class="footnote">
+              Retention rate = customers from a registration-month cohort with a transaction in that activity month,
+              divided by that cohort's size. Source: analytics.retention_kpis.
+            </p>
+          </div>
+        </section>
+
+        <section class="panel full-width-panel">
+          <div class="panel-header">
+            <div>
+              <p class="label">Coverage limitation</p>
+              <h3>Age and country analysis covers 33% of customers only</h3>
+            </div>
+          </div>
+          <p class="footnote">
+            <strong>Only 7,918 of 24,142 transacting customers (33%) have a matching row in the raw Users
+            files.</strong> The remaining 16,224 customers (67%) placed bets but have no age or country on
+            record at all -- the Users exports do not cover every customer who transacted. The two charts below
+            describe <strong>only the matched 33%</strong> and must not be read as covering the full customer
+            base. This coverage gap is itself a data-governance finding for Gracia. See docs/assumptions.md.
+          </p>
+        </section>
+
+        <section class="content-grid">
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Demographics (matched subset, n=7,918)</p>
+                <h3>Stake &amp; revenue share by age band</h3>
+              </div>
+            </div>
+            <div id="ageBandBars" class="risk-summary"></div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Demographics (matched subset, n=7,918)</p>
+                <h3>Stake share by country</h3>
+              </div>
+            </div>
+            <div id="countryBars" class="risk-summary"></div>
+            <p class="footnote">
+              South Africa dominates (97.8% of matched stake), consistent with the GA4 marketing traffic finding
+              (~96% of website traffic is also South African).
+            </p>
+          </div>
+        </section>
+
+        <section class="panel full-width-panel">
+          <div class="panel-header">
+            <div>
+              <p class="label">Customer detail</p>
+              <h3>Customer performance summary (top 15 by stake)</h3>
+            </div>
+          </div>
+          <div id="customerDetailTable" class="retention-table"></div>
+        </section>
+
+        <section class="panel full-width-panel">
+          <div class="panel-header">
+            <div>
+              <p class="label">Customer value</p>
+              <h3>Top revenue-generating customers (May-July)</h3>
+            </div>
+          </div>
+          <div id="customerList" class="customer-list"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

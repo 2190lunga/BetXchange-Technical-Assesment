@@ -1,0 +1,19 @@
+metric,headline_value,source,notes
+Total monthly KPI rows,3,output/monthly_kpis.csv,Monthly summary across May, June, July
+Customer KPI rows,24142,output/customer_kpis.csv,Customer-level activity summary
+Product KPI rows,18,output/product_kpis.csv,Category-level product summary (modeled stake allocation)
+Retention KPI rows,12,output/retention_kpis.csv,Cohort retention summary
+Risk KPI rows,3,output/risk_kpis.csv,Monthly concentration/exposure summary
+Marketing KPI rows,3,output/marketing_kpis.csv,Monthly website traffic summary (GA4)
+Max monthly active customers,14887,output/monthly_kpis.csv,July
+Max transaction count,113116,output/monthly_kpis.csv,July
+Max total stake,293337284,output/monthly_kpis.csv,July
+Operator revenue (July),16615944,output/monthly_kpis.csv,Positive and growing (was previously misreported as a company loss)
+Operator margin (July),5.66%,output/monthly_kpis.csv,Stake minus payout as % of stake
+Retention example,87.55%,output/retention_kpis.csv,March cohort to July
+Stake concentration example,77.3%,output/risk_kpis.csv and vw_risk_analysis.csv,Share of July stake held by top 1% of users (148 people)
+Top 10 users stake share (July),36.3%,output/risk_kpis.csv,top10_user_stake_share_pct
+Demographic KPI rows,12,output/demographic_kpis.csv,Age band and country breakdown (matched subset only)
+Demographic coverage,32.8%,output/demographic_kpis.csv,Only 7918 of 24142 transacting customers matched to cleaned.users
+35-44 age band stake share,49.3%,output/demographic_kpis.csv,Matched subset only (n=7918)
+South Africa stake share,97.8%,output/demographic_kpis.csv,Matched subset only (n=7918)

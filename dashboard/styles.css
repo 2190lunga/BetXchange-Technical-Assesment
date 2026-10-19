@@ -1,0 +1,720 @@
+:root {
+  --brand-blue: #0a4fcf;
+  --brand-blue-deep: #0a43ae;
+  --brand-blue-strong: #073c9d;
+  --brand-blue-soft: #edf5ff;
+  --brand-yellow: #f5d54a;
+  --brand-yellow-soft: #ffeeb0;
+  --bg: #0b4fcf;
+  --panel: #ffffff;
+  --panel-alt: #f5f9ff;
+  --sidebar: #edf5ff;
+  --text: #153450;
+  --text-soft: #4c6789;
+  --muted: #6884a8;
+  --line: #dfeaf9;
+  --success: #1fa77a;
+  --danger: #d95d5d;
+  --warning: #d9ad1d;
+  --shadow: rgba(12, 38, 76, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(180deg, var(--brand-blue) 0%, var(--brand-blue-deep) 100%);
+  color: var(--text);
+}
+
+body {
+  padding: 24px;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.page-shell {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 22px;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.sidebar,
+.panel,
+.kpi-card,
+.summary-box {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: 0 10px 24px var(--shadow);
+}
+
+.sidebar {
+  padding: 20px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(6px);
+}
+
+.brand-wrap {
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.betx-logo {
+  font-size: clamp(2rem, 2vw, 3.2rem);
+  font-weight: 800;
+  letter-spacing: -0.07em;
+  line-height: 1;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  color: var(--brand-blue-deep);
+}
+
+.betx-logo .bet,
+.betx-logo .change {
+  color: #ffffff;
+}
+
+.betx-logo .x-mark {
+  color: var(--brand-yellow);
+  display: inline-block;
+  transform: rotate(14deg);
+  margin: 0 0.12em;
+  text-shadow: 0 0 0 rgba(0,0,0,0);
+}
+
+.eyebrow {
+  margin: 0 0 5px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+h1, h2, h3, h4, p {
+  margin: 0;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nav-item {
+  display: block;
+  text-decoration: none;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.05);
+  color: #ffffff;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+.nav-item:hover,
+.nav-item.active {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(245, 213, 74, 0.8);
+  color: var(--brand-yellow);
+}
+
+.sidebar-card {
+  margin-top: auto;
+  background: rgba(245, 213, 74, 0.12);
+  border: 1px solid rgba(245, 213, 74, 0.5);
+  border-radius: 16px;
+  padding: 18px 16px;
+}
+
+/* .label and .muted default to a grayish-blue tuned for white panels. The sidebar
+   card is a dark, gold-tinted box, so those same classes need lighter overrides here
+   to stay legible (same root cause as the earlier topbar contrast fix). */
+.sidebar-card .label {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.sidebar-card .muted {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+/* .accent (var(--brand-blue)) is nearly the same color as the dark page background,
+   so it is invisible inside the sidebar card. Use the card's own gold accent instead. */
+.sidebar-card .accent {
+  color: var(--brand-yellow);
+}
+
+.value.large {
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 10px 0 6px;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.main-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 4px;
+}
+
+.topbar h2 {
+  font-size: clamp(1.7rem, 2vw, 2.6rem);
+  line-height: 1.18;
+  letter-spacing: -0.05em;
+  color: #ffffff;
+}
+
+.header-pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pill {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  padding: 8px 12px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.78rem;
+}
+
+.pill.accent {
+  background: rgba(245, 200, 76, 0.16);
+  border-color: rgba(245, 200, 76, 0.5);
+  color: var(--brand-yellow);
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 18px;
+}
+
+.kpi-card {
+  padding: 20px 18px;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+}
+
+.kpi-card .label {
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+}
+
+.kpi-card .value {
+  font-size: clamp(1.85rem, 2vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: -0.06em;
+  margin: 12px 0 8px;
+  color: var(--brand-blue-deep);
+}
+
+.kpi-card .meta {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.meta.positive { color: var(--success); }
+.meta.negative { color: var(--danger); }
+.meta.neutral { color: var(--brand-blue); }
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 22px;
+}
+
+.lower-grid {
+  grid-template-columns: 1.2fr 0.8fr;
+}
+
+.panel {
+  padding: 18px;
+  background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+}
+
+.large-panel {
+  min-height: 350px;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.panel-header h3 {
+  margin-top: 4px;
+  font-size: 1.2rem;
+  color: var(--brand-blue-deep);
+}
+
+.label {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.trend-chart {
+  height: 290px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: linear-gradient(180deg, #fbfdff 0%, #f5f9ff 100%);
+  overflow: hidden;
+}
+
+.trend-chart svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.product-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.product-row {
+  display: grid;
+  grid-template-columns: 110px minmax(0, 1fr) 82px;
+  gap: 12px;
+  align-items: center;
+}
+
+.product-label {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.bar-track {
+  background: rgba(11, 78, 162, 0.06);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  height: 10px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--brand-blue) 0%, var(--brand-yellow) 100%);
+}
+
+.product-value {
+  text-align: right;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.retention-table {
+  overflow: auto;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--panel-alt);
+}
+
+.retention-table table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 420px;
+}
+
+.retention-table th,
+.retention-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: center;
+}
+
+.retention-table th {
+  background: rgba(11, 78, 162, 0.04);
+  color: var(--muted);
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.retention-table td {
+  font-weight: 700;
+  color: var(--text);
+}
+
+.cell-good { color: var(--success); }
+.cell-risk { color: var(--danger); }
+
+.risk-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.risk-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.risk-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.82rem;
+  color: var(--text-soft);
+}
+
+.risk-track {
+  height: 12px;
+  background: rgba(11, 78, 162, 0.06);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.risk-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--success) 0%, var(--brand-yellow) 50%, var(--danger) 100%);
+}
+
+.customer-list {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(180px, 1fr));
+  gap: 14px;
+}
+
+.customer-item {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px 14px;
+}
+
+.customer-item .name {
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--brand-blue-deep);
+}
+
+.customer-item .line {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 7px 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.customer-item .line strong {
+  color: var(--text);
+}
+
+.negative { color: var(--danger); }
+.positive { color: var(--success); }
+.accent { color: var(--brand-blue); }
+
+.full-width-panel {
+  margin-top: 4px;
+}
+
+.summary-box {
+  padding: 18px;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+}
+
+.summary-box h3 {
+  margin-top: 8px;
+  margin-bottom: 14px;
+  color: var(--brand-blue-deep);
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.metric {
+  background: rgba(11, 78, 162, 0.03);
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  padding: 14px;
+}
+
+.metric .title {
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.metric .number {
+  margin-top: 8px;
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: var(--brand-blue-deep);
+}
+
+.metric .tag {
+  margin-top: 10px;
+  display: inline-block;
+  font-size: 0.76rem;
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: rgba(245, 200, 76, 0.12);
+  color: var(--brand-blue);
+}
+
+.footnote {
+  color: var(--text-soft);
+  font-size: 0.8rem;
+  line-height: 1.55;
+  margin-top: 10px;
+  padding: 0 2px;
+}
+
+/* A few footnotes sit directly on the main-panel's blue background (not inside a
+   white .panel box), so the default grayish-blue color is invisible there. Same root
+   cause as the earlier topbar/sidebar-card contrast fixes. */
+.main-panel > .footnote {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* Month filter pills: clicking these (or the chart elements wired to the same
+   handler) updates every reactive visual on the page -- mirrors Power BI
+   cross-filtering/cross-highlighting between visuals. */
+.month-filter {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+
+.month-pill {
+  cursor: pointer;
+  background: rgba(11, 78, 162, 0.04);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 7px 16px;
+  color: var(--text-soft);
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: 0.15s ease;
+}
+
+.month-pill:hover {
+  border-color: rgba(11, 78, 162, 0.3);
+  color: var(--brand-blue-deep);
+}
+
+.month-pill.is-selected {
+  background: var(--brand-blue-deep);
+  border-color: var(--brand-blue-deep);
+  color: #ffffff;
+}
+
+/* Generic vertical bar chart (e.g. "Monthly Active Customers") */
+.bar-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 18px;
+  height: 230px;
+  padding: 10px 6px 0;
+}
+
+.bar-chart-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  cursor: pointer;
+}
+
+.bar-chart-value {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--brand-blue-deep);
+  margin-bottom: 8px;
+}
+
+.bar-chart-col-fill {
+  width: 100%;
+  max-width: 68px;
+  border-radius: 10px 10px 4px 4px;
+  background: linear-gradient(180deg, #7ab6ff 0%, var(--brand-blue) 100%);
+  transition: 0.15s ease;
+}
+
+.bar-chart-col.is-selected .bar-chart-col-fill {
+  background: linear-gradient(180deg, var(--brand-yellow) 0%, #e0a92a 100%);
+}
+
+.bar-chart-label {
+  margin-top: 10px;
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+/* Donut chart (product contribution) */
+.donut-wrap {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+
+.donut-chart svg {
+  overflow: visible;
+}
+
+.donut-slice {
+  cursor: pointer;
+  transition: 0.15s ease;
+  opacity: 0.92;
+}
+
+.donut-slice:hover,
+.donut-slice.is-selected {
+  opacity: 1;
+  transform: scale(1.03);
+  transform-origin: 110px 110px;
+}
+
+.donut-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+  min-width: 160px;
+}
+
+.donut-legend-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 8px;
+  transition: 0.15s ease;
+}
+
+.donut-legend-item:hover,
+.donut-legend-item.is-selected {
+  background: rgba(11, 78, 162, 0.06);
+}
+
+.donut-legend-swatch {
+  width: 11px;
+  height: 11px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.donut-legend-name {
+  flex: 1;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.donut-legend-value {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+/* Scatter chart (customer stake vs margin) */
+.scatter-chart {
+  height: 260px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: linear-gradient(180deg, #fbfdff 0%, #f5f9ff 100%);
+  overflow: hidden;
+}
+
+.scatter-chart svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.scatter-dot {
+  cursor: pointer;
+  transition: 0.15s ease;
+}
+
+.scatter-dot:hover {
+  stroke: var(--brand-blue-deep);
+  stroke-width: 2;
+}
+
+@media (max-width: 1100px) {
+  .page-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(2, minmax(180px, 1fr));
+  }
+
+  .content-grid,
+  .lower-grid,
+  .summary-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  body {
+    padding: 12px;
+  }
+
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cards-grid,
+  .customer-list {
+    grid-template-columns: 1fr;
+  }
+
+  .betx-logo {
+    font-size: 2.5rem;
+  }
+}

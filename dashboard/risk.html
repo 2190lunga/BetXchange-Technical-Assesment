@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BetXchange | Risk</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <aside class="sidebar">
+        <div class="brand-wrap">
+          <div class="betx-logo" aria-label="BetXchange logo">
+            <span class="bet">bet</span><span class="x-mark">X</span><span class="change">change</span>
+          </div>
+        </div>
+
+        <nav class="nav">
+          <a class="nav-item" href="index.html">Overview</a>
+          <a class="nav-item" href="customers.html">Customer Behaviour</a>
+          <a class="nav-item" href="products.html">Products</a>
+          <a class="nav-item active" href="risk.html">Risk</a>
+          <a class="nav-item" href="growth.html">Growth</a>
+        </nav>
+
+        <div class="sidebar-card">
+          <p class="label">Board risk</p>
+          <p class="value large negative">77.3%</p>
+          <p class="muted">Share of July stake held by the top 1% of users</p>
+        </div>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Risk indicators</p>
+            <h2>Revenue is healthy, but highly concentrated in a small group of users</h2>
+          </div>
+          <div class="header-pills">
+            <span class="pill">Stake concentration</span>
+            <span class="pill accent">Payout exposure</span>
+          </div>
+        </header>
+
+        <div class="month-filter" id="monthFilter"></div>
+
+        <section class="cards-grid" id="kpiCards"></section>
+
+        <section class="content-grid">
+          <div class="panel large-panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Trend</p>
+                <h3>Risk exposure by month</h3>
+              </div>
+            </div>
+            <div id="riskTrendChart" class="trend-chart"></div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Volume</p>
+                <h3>Large-stake transactions by month</h3>
+              </div>
+            </div>
+            <div id="largeStakeBars" class="bar-chart"></div>
+            <p class="footnote">
+              Transactions above that month's own 95th percentile of stake. Not a fixed dollar threshold, so this
+              count reflects real volume growth, not just a shifting bar.
+            </p>
+          </div>
+        </section>
+
+        <section class="content-grid">
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Methodology</p>
+                <h3>Risk summary</h3>
+              </div>
+            </div>
+            <div id="riskSummary" class="risk-summary"></div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Concentration</p>
+                <h3>Stake held by segment</h3>
+              </div>
+            </div>
+            <div id="stakeSegments" class="risk-summary"></div>
+          </div>
+        </section>
+
+        <section class="content-grid">
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Payout exposure</p>
+                <h3>Customer-win events by month</h3>
+              </div>
+            </div>
+            <div id="customerWinBars" class="bar-chart"></div>
+            <p class="footnote">
+              Count of transactions where the customer came out ahead -- the operator's real payout exposure, not a
+              company "loss event".
+            </p>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Full detail</p>
+                <h3>Risk summary table (all months)</h3>
+              </div>
+            </div>
+            <div id="riskTable" class="retention-table"></div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="label">What this page can and cannot tell you</p>
+              <h3>Scope and limits</h3>
+            </div>
+          </div>
+          <p class="footnote">
+            These figures are computed directly from <code>cleaned.transactions</code> and are fully reproducible
+            (see <code>docs/assumptions.md</code>). <strong>Operator margin</strong> is stake minus payout, divided
+            by stake — the business's gross gaming revenue as a % of volume, not a customer-facing "loss ratio".
+            The large-stake threshold shown above is that month's own 95th percentile of transaction stake, not a
+            fixed amount, so it adjusts as volume grows. <strong>This page cannot detect fraud, collusion, bonus
+            abuse, or multi-accounting</strong> — the source data has no device, IP, payment method, or
+            account-linkage fields. What it does show reliably: revenue is positive and growing, and a very small
+            number of users account for a large share of stake and payout volatility — a concentration /
+            dependency risk, not evidence of wrongdoing.
+          </p>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

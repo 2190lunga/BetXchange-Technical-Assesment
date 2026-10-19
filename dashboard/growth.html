@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BetXchange | Growth</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <aside class="sidebar">
+        <div class="brand-wrap">
+          <div class="betx-logo" aria-label="BetXchange logo">
+            <span class="bet">bet</span><span class="x-mark">X</span><span class="change">change</span>
+          </div>
+        </div>
+
+        <nav class="nav">
+          <a class="nav-item" href="index.html">Overview</a>
+          <a class="nav-item" href="customers.html">Customer Behaviour</a>
+          <a class="nav-item" href="products.html">Products</a>
+          <a class="nav-item" href="risk.html">Risk</a>
+          <a class="nav-item active" href="growth.html">Growth</a>
+        </nav>
+
+        <div class="sidebar-card">
+          <p class="label">Trend</p>
+          <p class="value large positive">+R16.6m</p>
+          <p class="muted">Operator revenue, July (up from +R7.4m in May)</p>
+        </div>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Growth opportunities</p>
+            <h2>Revenue growth is real and accelerating; the next step is reducing dependency on a small user base</h2>
+          </div>
+          <div class="header-pills">
+            <span class="pill">Upside</span>
+            <span class="pill accent">Action plan</span>
+          </div>
+        </header>
+
+        <section class="summary-grid">
+          <div class="summary-box">
+            <p class="label">User growth</p>
+            <h3>+26%</h3>
+            <div class="metric"><div class="title">Driver</div><div class="number">Customer acquisition</div></div>
+          </div>
+          <div class="summary-box">
+            <p class="label">Retention</p>
+            <h3>87.6%</h3>
+            <div class="metric"><div class="title">Cohort</div><div class="number">Mar 2024</div></div>
+          </div>
+          <div class="summary-box">
+            <p class="label">Margin fix</p>
+            <h3>3 levers</h3>
+            <div class="metric"><div class="title">Action</div><div class="number">Retention + mix + concentration</div></div>
+          </div>
+        </section>
+
+        <section class="content-grid">
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Retention lift</p>
+                <h3>Retention lift potential by cohort (July)</h3>
+              </div>
+            </div>
+            <div id="retentionLiftBars" class="bar-chart"></div>
+            <p class="footnote">
+              Lower bars = the biggest retention upside. The 2024/05 and 2024/04 cohorts have more room to improve
+              than the newest (2024/07) or oldest (2024/03) cohorts.
+            </p>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="label">Value concentration</p>
+                <h3>Growth opportunity by stake segment (July)</h3>
+              </div>
+            </div>
+            <div id="growthSegmentBars" class="risk-summary"></div>
+            <p class="footnote">
+              The top 1% of users generate 68% of July's operator revenue. Retaining and protecting this segment
+              matters more than acquiring new, low-stake customers.
+            </p>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="label">Product strategy</p>
+              <h3>Product expansion priorities (July, by operator revenue)</h3>
+            </div>
+          </div>
+          <div id="productPriorityBars" class="product-bars"></div>
+          <p class="footnote">
+            Sorted by estimated operator revenue, not stake volume -- Casino and Lotto generate the strongest
+            revenue-to-stake ratio, making them the priority for continued investment. See docs/assumptions.md for
+            the modeled-allocation caveat.
+          </p>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="label">Growth priorities</p>
+              <h3>Recommended actions</h3>
+            </div>
+          </div>
+          <div class="risk-summary">
+            <div class="risk-item">
+              <div class="risk-header"><span>Increase retention among new cohorts</span><strong>High</strong></div>
+              <div class="risk-track"><div class="risk-fill" style="width:90%"></div></div>
+            </div>
+            <div class="risk-item">
+              <div class="risk-header"><span>Shift volume to better-margin products</span><strong>Medium</strong></div>
+              <div class="risk-track"><div class="risk-fill" style="width:55%"></div></div>
+            </div>
+            <div class="risk-item">
+              <div class="risk-header"><span>Reduce revenue dependency on the top 1% of users (77% of July stake)</span><strong>High</strong></div>
+              <div class="risk-track"><div class="risk-fill" style="width:90%"></div></div>
+            </div>
+          </div>
+          <p class="footnote">
+            Priority ratings (High/Medium) are a business judgment call based on the verified metrics on the Risk
+            and Products pages, not a separately computed score. See docs/assumptions.md.
+          </p>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
