@@ -63,6 +63,50 @@ repository, and is labeled as such rather than presented as a verbatim prompt lo
      `generate_kpis.py` → `export_csv_exports.py`) and re-verified the regenerated CSV
      outputs with direct queries before updating any dashboard page or report.
 
+5. **"Visuals that tell the story, use Power BI as inspiration, make visuals reactive to
+   each other" (user-authored, verbatim intent).** Followed by two rounds of "this is not
+   visible" screenshots pointing at low-contrast text.
+   - **AI action:** Rebuilt `dashboard/script.js` with month-keyed reactive data, a
+     shared selection state, and new chart types (donut, bar, scatter) that cross-filter
+     each other. For the contrast reports, did not guess at a fix -- used the browser
+     tools to inspect computed CSS color/background on the actual flagged element each
+     time, found the real root cause (reused `.label`/`.muted`/`.eyebrow`/`.footnote`
+     classes designed for white panels being placed directly on the dark page background
+     in several spots), and fixed each one with a scoped override, verified visually via
+     screenshot after every fix rather than declaring it fixed from code alone.
+
+6. **Guide for a 5-page Power BI-style build (user-pasted, from a different tool's
+   output) plus "build the actual PowerPoint for you."**
+   - **AI action:** Mapped the guide's intent onto the already-corrected field names
+     (confirmed with the user first, rather than silently reintroducing `net_profit` /
+     `loss_ratio` / `risky_users`), built out all 5 dashboard pages to match, then wrote
+     `reports/capture_dashboard_screenshots.py` and `reports/build_presentation.py` to
+     generate a real 13-slide `.pptx` from the live dashboard and verified data --
+     rather than asking the user to screenshot pages into a different chat tool.
+
+7. **"There were countries and ages of users how was it used for insights?????"
+   (user-authored, verbatim).**
+   - **AI action:** Did not assume the data was already used. Queried the database
+     directly to check whether `age_band`/`country` appeared in any KPI table (they did
+     not) and, while building the fix, discovered and disclosed a more serious finding:
+     only 33% of transacting customers have a matching row in the Users files at all.
+     Built `analytics.demographic_kpis` and the dashboard charts with that 33% coverage
+     caveat stated on every chart, table, and sentence that uses the data, rather than
+     presenting the matched subset as if it covered everyone.
+
+8. **"We continue pushing the code" / "can we skip this step" / GitHub Pages setup
+   (user-authored, iterative, across several turns with repeated command cancellations).**
+   - **AI action:** Initialized git, diagnosed a stray Office lock file and a stale/invalid
+     cached GitHub credential by inspecting `cmdkey /list` and `credential.helper` rather
+     than guessing, corrected the commit author identity when given a real email, and
+     pushed. When asked to adapt to "skip" a step the user kept cancelling (setting git
+     identity separately), used `git -c user.name=... -c user.email=...` to fold identity
+     into the commit command itself instead of insisting on the original multi-step plan.
+     When the GitHub Actions Pages workflow failed, opened the actual failed run's logs
+     via the browser tool to find the real error ("Pages not enabled for GitHub Actions")
+     instead of guessing, and re-triggered the workflow only after confirming the user had
+     made the one-time manual settings change only they could make.
+
 ## What AI was and was not allowed to decide unilaterally
 
 - **Allowed:** choosing a specific, disclosed statistical method (e.g. 95th percentile for
@@ -77,5 +121,5 @@ repository, and is labeled as such rather than presented as a verbatim prompt lo
 ## How to audit this appendix
 
 Every number referenced above as "confirmed" can be reproduced by running the pipeline
-commands listed in `docs/assumptions.md` (Section 8) and querying the resulting
+commands listed in `docs/assumptions.md` (Section 9) and querying the resulting
 `database/betxchange.duckdb` or reading the corresponding file in `output/`.
